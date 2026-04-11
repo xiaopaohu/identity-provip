@@ -1,0 +1,43 @@
+package com.datn.identityprovip.entity;
+
+import com.datn.identityprovip.enums.VerificationType;
+import jakarta.persistence.*;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+
+import java.time.Instant;
+
+@Entity
+@Table(name = "verification_tokens")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class VerificationToken {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", updatable = false, nullable = false)
+    Long id;
+
+    @Column(name = "token", nullable = false, unique = true)
+    String token;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    User user;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type", nullable = false)
+    VerificationType type;
+
+    @Column(name = "expiry_at", nullable = false)
+    Instant expiryAt;
+
+    @Column(name = "created_at", insertable = false, updatable = false)
+    Instant createdAt;
+
+    @Column(name = "consumed_at")
+    Instant consumedAt;
+}

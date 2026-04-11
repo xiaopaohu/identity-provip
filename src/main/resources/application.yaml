@@ -1,0 +1,83 @@
+spring:
+  application:
+    name: identity-provip
+  servlet:
+    encoding:
+      charset: UTF-8
+      force-response: true
+      force-request: true
+
+  profiles:
+    active: local
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: pthao101023@gmail.com
+    password: lpybzyocjvuinqtz
+    protocol: smtp
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/db_identity
+    username: postgres
+    password: Djjcute@147258369
+
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      idle-timeout: 300000
+      connection-timeout: 20000
+      max-lifetime: 1200000
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate.jdbc.hibernate.jdbc.batch_size: 30
+      hibernate.jdbc.hibernate.jdbc.jdbc.fetch_size: 100
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      hibernate.format_sql: true
+
+server:
+  port: 8080
+
+app:
+  url:
+    base: http://localhost:8080
+  telegram:
+    bot-token: "7861163277:AAHCfukhb5i_ueaFMlfUsSolqH1og15OsIQ"
+    chat-id: "6118213308"
+
+logging:
+  level:
+    com.zaxxer.hikari: DEBUG
+    root: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.orm.jdbc.bind: DEBUG
+    org.hibernate.orm.results: TRACE
+    org.springframework.jdbc.datasource: DEBUG
+    org.springframework.security: DEBUG
+
+jwt:
+  signerKey: "ZJG37U8YWFcYH8jNE0p9QUqtS7yMlpolWnrO7XnNNwA"
+
+vnpay:
+  tmn_code: HNMVJKLC
+  hash_secret: 9C887DSM6EIG0KV10G57I3KFUPFCLYUB
+  pay_url: https://sandbox.vnpayment.vn/paymentv2/vpcpay.html
+  return_url: https://peroneal-solomon-unresiliently.ngrok-free.dev/payments/vnpay-callback
+  ipn_url: https://peroneal-solomon-unresiliently.ngrok-free.dev/orders/vnpay-ipn
