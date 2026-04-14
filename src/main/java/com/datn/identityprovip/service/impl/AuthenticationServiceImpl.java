@@ -1,6 +1,7 @@
 package com.datn.identityprovip.service.impl;
 
 import com.datn.identityprovip.dto.event.NotificationEvent;
+import com.datn.identityprovip.dto.event.UserActivatedEvent;
 import com.datn.identityprovip.dto.payload.SecurityCodePayload;
 import com.datn.identityprovip.dto.request.*;
 import com.datn.identityprovip.dto.response.ApiResponse;
@@ -467,6 +468,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             user.setStatus(UserStatus.ACTIVE);
             userRepository.save(user);
             // promotionService.rewardWelcomeVoucher(user);
+            eventPublisher.publishEvent(new UserActivatedEvent(this, user));
             log.info("User {} activated successfully", user.getId());
         } else if (type == VerificationType.FORGOT_PASSWORD) {
             log.info("User {} verified for forgot password", user.getId());

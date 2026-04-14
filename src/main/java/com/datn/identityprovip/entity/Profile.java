@@ -25,12 +25,10 @@ import java.util.UUID;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Profile {
-
     @Id
-    @Column(name = "identity_id")
     UUID identityId;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @MapsId
     @JoinColumn(name = "identity_id")
     User user;
@@ -39,9 +37,10 @@ public class Profile {
     @Column(name = "full_name")
     String fullName;
 
-    @Column(name = "nickname")
+    @Column(name = "nickname", unique = true)
     String nickname;
 
+    @Builder.Default
     @Enumerated(EnumType.STRING)
     @Column(name = "gender", length = 20)
     Gender gender = Gender.UNKNOWN;
@@ -62,7 +61,7 @@ public class Profile {
     String membershipLevel = "BRONZE";
 
     @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Builder.Default  // Bắt buộc phải có để Builder không set nó về null
+    @Builder.Default
     Set<Address> addresses = new HashSet<>();
 
     @CreationTimestamp
@@ -81,7 +80,7 @@ public class Profile {
         address.setProfile(this);
 
         if (addresses.size() == 1) {
-            address.setDefault(true);
+            address.setDefaultAddress(true);
         }
     }
 }

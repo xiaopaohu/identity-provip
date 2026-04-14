@@ -60,7 +60,7 @@ public class Address {
 
     @Builder.Default
     @Column(name = "is_default", nullable = false)
-    boolean isDefault = false;
+    boolean defaultAddress = false;
 
     @Builder.Default
     @Column(name = "address_type")

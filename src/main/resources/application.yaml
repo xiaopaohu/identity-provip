@@ -75,6 +75,11 @@ logging:
 jwt:
   signerKey: "ZJG37U8YWFcYH8jNE0p9QUqtS7yMlpolWnrO7XnNNwA"
 
+cloudinary:
+  cloud-name: dq6zdwiyr
+  api-key: 649919864333234
+  api-secret: HmEbrvSzrkXXMuXGuWxrNI8Nd_U
+
 vnpay:
   tmn_code: HNMVJKLC
   hash_secret: 9C887DSM6EIG0KV10G57I3KFUPFCLYUB

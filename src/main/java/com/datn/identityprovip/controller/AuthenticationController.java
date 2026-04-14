@@ -5,7 +5,6 @@ import com.datn.identityprovip.dto.response.ApiResponse;
 import com.datn.identityprovip.dto.response.AuthenticationResponse;
 import com.datn.identityprovip.dto.response.IntrospectResponse;
 import com.datn.identityprovip.dto.response.VerificationResponse;
-import com.datn.identityprovip.enums.VerificationType;
 import com.datn.identityprovip.service.AuthenticationService;
 import com.nimbusds.jose.JOSEException;
 import jakarta.validation.Valid;
@@ -39,7 +38,6 @@ public class AuthenticationController {
 
     @PostMapping("/resend")
     public ApiResponse<Object> resend(@RequestBody @Valid ResendRequest request) {
-        // Dùng chung cho cả luồng đăng ký lỡ tay tắt máy, hoặc luồng quên mật khẩu
         return authenticationService.resendVerification(request.getIdentifier(), request.getType());
     }
 

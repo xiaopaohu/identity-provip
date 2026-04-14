@@ -14,7 +14,7 @@ public interface UserService {
     AdminUserResponse createUser(AdminCreateUserRequest request);
     PageResponse<AdminUserResponse> getAllUsers(int page, int size);
     AdminUserResponse getAdminUserDetail(UUID id);
-    AdminUserResponse updateUser(UUID userId, AdminUserUpdateRequest request);
+    AdminUserResponse updateUser(UUID userId, AdminUpdateUserRequest request);
 
     // Điều khiển trạng thái
     void softDelete(UUID targetId);

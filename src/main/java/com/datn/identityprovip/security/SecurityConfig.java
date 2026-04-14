@@ -40,8 +40,8 @@ public class SecurityConfig {
             "/auth/forgot-password/find-account",
             "/auth/forgot-password/send-otp",
             "/auth/forgot-password/reset",
-
             "/auth/forgot-password/**",
+            "/geo/**",
 
             "/auth/complete-profile",
             "/brands",

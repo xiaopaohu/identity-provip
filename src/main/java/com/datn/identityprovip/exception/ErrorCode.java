@@ -30,6 +30,9 @@ public enum ErrorCode {
     INVALID_IDENTIFIER_FORMAT(1013, "Không đúng định dạng", HttpStatus.BAD_REQUEST),
     PASSWORD_TOO_SHORT(1014, "Mật khẩu quá ngắn", HttpStatus.BAD_REQUEST),
     PASSWORD_NOT_MATCH(1015, "Mật khẩu không khớp", HttpStatus.BAD_REQUEST),
+    PROFILE_NOT_FOUND(1016, "Không tìm thấy thông tin người dùng", HttpStatus.BAD_REQUEST),
+    NICKNAME_EXISTED(1017, "Nickname đã tồn tại!", HttpStatus.BAD_REQUEST),
+    ADDRESS_NOT_FOUND(1018, "Không tìm thấy địa chỉ", HttpStatus.BAD_REQUEST),
 
     // ========================================================================
     // 11xx: ROLE (Phân quyền)
@@ -63,7 +66,17 @@ public enum ErrorCode {
     ACCOUNT_BANNED(1301, "Tài khoản của bạn đã bị khóa vĩnh viễn", HttpStatus.FORBIDDEN),
     ACCOUNT_TEMPORARILY_LOCKED(1302, "Tài khoản bị khóa tạm thời. Vui lòng thử lại sau", HttpStatus.FORBIDDEN),
     ACCOUNT_LOCKED_BY_ADMIN(1303, "Tài khoản bị khóa bởi quản trị viên", HttpStatus.FORBIDDEN),
-    USER_DELETED_PERMANENTLY(1304, "Tài khoản đã bị xóa vĩnh viễn", HttpStatus.GONE);
+    USER_DELETED_PERMANENTLY(1304, "Tài khoản đã bị xóa vĩnh viễn", HttpStatus.GONE),
+
+    // ========================================================================
+    // 14xx: UPLOAD
+    // ========================================================================
+    UPLOAD_FAILED(1404, "Tải ảnh lên thất bại", HttpStatus.BAD_REQUEST),
+    INVALID_PROVINCE(1405, "Tỉnh không hợp lệ", HttpStatus.BAD_REQUEST),
+    INVALID_DISTRICT(1406, "Huyện không hợp lệ", HttpStatus.BAD_REQUEST),
+    INVALID_WARD(1407, "Đường không hợp lệ", HttpStatus.BAD_REQUEST),
+    ADDRESS_ALREADY_DEFAULT(1408, "Địa chỉ đã là mặc định!", HttpStatus.BAD_REQUEST);
+
 
     ErrorCode(int code, String message, HttpStatusCode statusCode) {
         this.code = code;

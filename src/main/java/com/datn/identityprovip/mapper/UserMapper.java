@@ -1,7 +1,7 @@
 package com.datn.identityprovip.mapper;
 
 import com.datn.identityprovip.dto.request.AdminCreateUserRequest;
-import com.datn.identityprovip.dto.request.AdminUserUpdateRequest;
+import com.datn.identityprovip.dto.request.AdminUpdateUserRequest;
 import com.datn.identityprovip.dto.request.RegisterRequest;
 import com.datn.identityprovip.dto.response.AdminUserResponse;
 import com.datn.identityprovip.dto.response.UserResponse;
@@ -36,7 +36,7 @@ public interface UserMapper {
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "userRoles", ignore = true)
     @Mapping(target = "passwordHash", ignore = true)
-    void updateUser(@MappingTarget User user, AdminUserUpdateRequest request);
+    void updateUser(@MappingTarget User user, AdminUpdateUserRequest request);
 
 //    @Mapping(target = "roles", expression = "java(user.getUserRoles().stream().map(ur -> ur.getRole().getName()).collect(java.util.stream.Collectors.toSet()))")
     @Mapping(target = "roles", expression = "java(mapUserRolesToNames(user.getUserRoles()))")

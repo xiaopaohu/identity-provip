@@ -13,7 +13,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class AdminUserUpdateRequest {
+public class AdminUpdateUserRequest {
     @Size(min = 8, message = "PASSWORD_TOO_SHORT")
     String password;
 
